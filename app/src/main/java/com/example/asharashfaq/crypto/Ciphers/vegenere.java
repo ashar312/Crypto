@@ -1,5 +1,6 @@
 package com.example.asharashfaq.crypto.Ciphers;
 
+
 public class vegenere {
     private String Message;
     private String Key;
@@ -17,20 +18,68 @@ public class vegenere {
         return Key;
     }
 
-    public String Encryption(){
+    boolean lowercase = true;
+
+    public String Decryption(){
         String temp = "";
         CharToNumbers();
         int j = 0;
+        char c;
         for (int i = 0; i < Message.length(); i++) {
             if(Message.charAt(i) != ' '){
                 if(j == Key.length()){
                     j = 0;
                 }
-                int a = search(Message.charAt(i));
-                int b = search(Key.charAt(j));
-                int temNum = search(Message.charAt(i)) + search(Key.charAt(j));
-                temp += search(NumToChar(temNum));
+                if(Message.charAt(i) >= 'A' && Message.charAt(i) <= 'Z'){
+                    lowercase = false;
+                }
+                int temNum = search(Message.charAt(i)) - search(Key.charAt(j));
+                if(lowercase){
+                    c = Character.toLowerCase(search(NumToChar(temNum)));
+                }
+                else{
+                    c = search(NumToChar(temNum));
+                }
+                temp += c;
+                lowercase = true;
                 j++;
+
+
+
+            }
+            else{
+                temp += ' ';
+            }
+        }
+        return temp;
+    }
+
+    public String Encryption(){
+        String temp = "";
+        CharToNumbers();
+        int j = 0;
+        char c;
+        for (int i = 0; i < Message.length(); i++) {
+            if(Message.charAt(i) != ' '){
+                if(j == Key.length()){
+                    j = 0;
+                }
+                if(Message.charAt(i) >= 'A' && Message.charAt(i) <= 'Z'){
+                    lowercase = false;
+                }
+                int temNum = search(Message.charAt(i)) + search(Key.charAt(j));
+                if(lowercase){
+                    c = Character.toLowerCase(search(NumToChar(temNum)));
+                }
+                else{
+                    c = search(NumToChar(temNum));
+                }
+                temp += c;
+                lowercase = true;
+                j++;
+
+
+
             }
             else{
                 temp += ' ';
@@ -68,5 +117,6 @@ public class vegenere {
             }
         }
         return '/';
+
     }
 }
