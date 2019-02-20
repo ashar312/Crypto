@@ -44,6 +44,7 @@ public class Encrypted_Activity extends AppCompatActivity {
                 intent.putExtra("key",key);
                 intent.putExtra("DecryptMsg",Todecrypt.getText().toString());
                 intent.putExtra("Cipher",Cipher);
+                intent.putExtra("StringKey",keyString);
                 startActivity(intent);
             }
         });

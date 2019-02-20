@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.asharashfaq.crypto.Ciphers.Ceasar;
+import com.example.asharashfaq.crypto.Ciphers.vegenere;
 import com.example.asharashfaq.crypto.R;
 
 public class Decrypt_Activity extends AppCompatActivity {
@@ -15,6 +16,7 @@ public class Decrypt_Activity extends AppCompatActivity {
     private TextView ciphertext1,Toencrypt;
     private Button Todecrypt;
     private int key;
+    private String StringKey;
     private String encrypted_msg = "";
     EditText msgTodecrypt;
 
@@ -31,6 +33,7 @@ public class Decrypt_Activity extends AppCompatActivity {
         ciphertext1.setText(getIntent().getExtras().getString("Cipher"));
         msgTodecrypt.setText(getIntent().getExtras().getString("DecryptMsg"));
         encrypted_msg = getIntent().getExtras().getString("Message");
+        StringKey = getIntent().getExtras().getString("StringKey");
         Todecrypt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,6 +50,8 @@ public class Decrypt_Activity extends AppCompatActivity {
                 Toencrypt.setText(ceasar.Decryption());
                 break;
             case "Vengenre":
+                vegenere veg = new vegenere(msgTodecrypt.getText().toString(),StringKey);
+                Toencrypt.setText(veg.decryption());
                 break;
         }
     }
