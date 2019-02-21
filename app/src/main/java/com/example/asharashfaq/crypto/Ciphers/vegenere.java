@@ -20,6 +20,19 @@ public class vegenere {
 
     boolean lowercase = true;
 
+    public String decryption() {
+        String res = "";
+        Message = Message.toUpperCase();
+        for (int i = 0, j = 0; i < Message.length(); i++) {
+            char c = Message.charAt(i);
+            if (c < 'A' || c > 'Z') continue;
+            res += (char)((c - Key.charAt(j) + 26) % 26 + 'A');
+            j = ++j % Key.length();
+        }
+        return res;
+    }
+
+
     public String Encryption(){
         String temp = "";
         CharToNumbers();
@@ -84,17 +97,6 @@ public class vegenere {
         }
         return '/';
 
-    }
-    public String decryption() {
-        String res = "";
-        Message = Message.toUpperCase();
-        for (int i = 0, j = 0; i < Message.length(); i++) {
-            char c = Message.charAt(i);
-            if (c < 'A' || c > 'Z') continue;
-            res += (char)((c - Key.charAt(j) + 26) % 26 + 'A');
-            j = ++j % Key.length();
-        }
-        return res;
     }
 
 

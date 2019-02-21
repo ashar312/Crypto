@@ -49,7 +49,7 @@ public class Decrypt_Activity extends AppCompatActivity {
                 Ceasar ceasar = new Ceasar(msgTodecrypt.getText().toString(),key);
                 Toencrypt.setText(ceasar.Decryption());
                 break;
-            case "Vengenre":
+            case "Vegenere":
                 vegenere veg = new vegenere(msgTodecrypt.getText().toString(),StringKey);
                 Toencrypt.setText(veg.decryption());
                 break;
