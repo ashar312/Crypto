@@ -16,8 +16,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String[] services = {"Ceasar's Cipher","Vegenere's Cipher"};
-        ListAdapter listAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,services);
+        String[] cipher = {"Ceasar's Cipher","Vegenere's Cipher","PolyAlphabethic Cipher"};
+        ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,cipher);
         ListView Cipherlist = findViewById(R.id.cipherslist);
         Cipherlist.setAdapter(listAdapter);
 

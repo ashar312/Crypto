@@ -62,6 +62,11 @@ public class Encrypted_Activity extends AppCompatActivity {
                 ciphertext.setText("Vegenere");
                 Cipher = "Vegenere";
                 break;
+            case "PolyAlphabethic Cipher":
+                ciphertext.setText("Polyalphabetic");
+                Cipher = "Polyalphabetic";
+                break;
+
         }
     }
 
@@ -75,6 +80,9 @@ public class Encrypted_Activity extends AppCompatActivity {
                 vegenere vegenere = new vegenere(Message.getText().toString(),keyString);
                 Todecrypt.setText(vegenere.Encryption());
                 break;
+            case "Polyalphabetic":
+                polyalphabetic polyalphabetic = new polyalphabetic(Message.getText().toString());
+                Todecrypt.setText(polyalphabetic.Encryption());
         }
     }
 
