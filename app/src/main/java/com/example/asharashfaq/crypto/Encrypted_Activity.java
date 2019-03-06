@@ -17,6 +17,7 @@ public class Encrypted_Activity extends AppCompatActivity {
     private EditText Message;
     private int key;
     private String keyString;
+    private String Key_PlayFair;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +30,7 @@ public class Encrypted_Activity extends AppCompatActivity {
         ToDecryptActivity = findViewById(R.id.Todecrypt);
         key = 3;
         keyString = "LEMON";
+        Key_PlayFair = "MONARCHY";
         Which_Cipher(Cipher);
         ToEncrypt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +68,10 @@ public class Encrypted_Activity extends AppCompatActivity {
                 ciphertext.setText("Polyalphabetic");
                 Cipher = "Polyalphabetic";
                 break;
+            case "PlayFair Cipher":
+                ciphertext.setText("PlayFair");
+                Cipher = "PlayFair";
+                break;
 
         }
     }
@@ -83,6 +89,11 @@ public class Encrypted_Activity extends AppCompatActivity {
             case "Polyalphabetic":
                 polyalphabetic polyalphabetic = new polyalphabetic(Message.getText().toString());
                 Todecrypt.setText(polyalphabetic.Encryption());
+                break;
+            case "PlayFair":
+                PlayFair playFair = new PlayFair(Message.getText().toString(),Key_PlayFair);
+                Todecrypt.setText(playFair.Encryption());
+
         }
     }
 
