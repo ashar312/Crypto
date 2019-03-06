@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.asharashfaq.crypto.Ciphers.Ceasar;
+import com.example.asharashfaq.crypto.Ciphers.PlayFair;
 import com.example.asharashfaq.crypto.Ciphers.polyalphabetic;
 import com.example.asharashfaq.crypto.Ciphers.vegenere;
 import com.example.asharashfaq.crypto.R;
@@ -18,6 +19,7 @@ public class Decrypt_Activity extends AppCompatActivity {
     private Button Todecrypt;
     private int key;
     private String StringKey;
+    private String Key_playfair;
     private String encrypted_msg = "";
     EditText msgTodecrypt;
 
@@ -35,6 +37,7 @@ public class Decrypt_Activity extends AppCompatActivity {
         msgTodecrypt.setText(getIntent().getExtras().getString("DecryptMsg"));
         encrypted_msg = getIntent().getExtras().getString("Message");
         StringKey = getIntent().getExtras().getString("StringKey");
+        Key_playfair = getIntent().getExtras().getString("Key_PlayFair");
         Todecrypt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,6 +60,11 @@ public class Decrypt_Activity extends AppCompatActivity {
             case "Polyalphabetic":
                 polyalphabetic polyalphabetic = new polyalphabetic(msgTodecrypt.getText().toString());
                 Toencrypt.setText(polyalphabetic.Decryption());
+                break;
+            case "PlayFair":
+                PlayFair playFair = new PlayFair(msgTodecrypt.getText().toString(),Key_playfair);
+                Toencrypt.setText(playFair.Decryption());
+                break;
         }
     }
 

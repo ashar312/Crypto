@@ -29,6 +29,37 @@ public class PlayFair {
     }
 
 
+    public String Decryption(){
+        String Decrypted = "";
+        for (int k = 0; k < Message.length(); k+=2) {
+            if(search_in_array(Message,k)){
+                if(tempj == tempj2){
+                    if(tempi == 0){
+                        tempi = range;
+                    }
+                    if(tempi2 == 0){
+                        tempi2 = range;
+                    }
+                    Decrypted += ""+Keyarray[tempi-1][tempj] + ""+Keyarray[tempi2-1][tempj];
+                }
+                else{
+                    Decrypted += ""+Keyarray[tempi][tempj2] + ""+Keyarray[tempi2][tempj];
+                }
+            }
+        }
+        Decrypted = removeX(Decrypted);
+        return Decrypted;
+    }
+
+    private String removeX(String msg){
+        String temp = "";
+        for(int i = 0; i < msg.length(); i++){
+            if(msg.charAt(i) != 'X'){
+                temp += msg.charAt(i)+"";
+            }
+        }
+        return temp;
+    }
 
     public String Encryption(){
         String Str = Arrangment(Pairs(Message));
