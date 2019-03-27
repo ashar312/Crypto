@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String[] cipher = {"Ceasar's Cipher","Vegenere's Cipher","PolyAlphabethic Cipher","PlayFair Cipher"};
+        String[] cipher = {"Ceasar's Cipher","Vegenere's Cipher","PolyAlphabethic Cipher","PlayFair Cipher","Rail Fence","Columnar Transposition Cipher"};
         ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,cipher);
         ListView Cipherlist = findViewById(R.id.cipherslist);
         Cipherlist.setAdapter(listAdapter);
@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this,Encrypted_Activity.class);
                 intent.putExtra("Cipher",Cipher);
                 startActivity(intent);
+                finish();
             }
         });
     }

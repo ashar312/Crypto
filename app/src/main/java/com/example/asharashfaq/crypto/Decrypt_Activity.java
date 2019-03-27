@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.example.asharashfaq.crypto.Ciphers.Ceasar;
 import com.example.asharashfaq.crypto.Ciphers.PlayFair;
+import com.example.asharashfaq.crypto.Ciphers.RailFence;
 import com.example.asharashfaq.crypto.Ciphers.polyalphabetic;
 import com.example.asharashfaq.crypto.Ciphers.vegenere;
 import com.example.asharashfaq.crypto.R;
@@ -64,6 +65,10 @@ public class Decrypt_Activity extends AppCompatActivity {
             case "PlayFair":
                 PlayFair playFair = new PlayFair(msgTodecrypt.getText().toString(),Key_playfair);
                 Toencrypt.setText(playFair.Decryption());
+                break;
+            case "RailFence":
+                break;
+            case "Columnar":
                 break;
         }
     }

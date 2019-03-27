@@ -16,6 +16,7 @@ public class Encrypted_Activity extends AppCompatActivity {
     private Button ToEncrypt;
     private EditText Message;
     private int key;
+    private int railfence_Key;
     private String keyString;
     private String Key_PlayFair;
     @Override
@@ -29,6 +30,7 @@ public class Encrypted_Activity extends AppCompatActivity {
         Message = findViewById(R.id.message);
         ToDecryptActivity = findViewById(R.id.Todecrypt);
         key = 3;
+        railfence_Key = 2;
         keyString = "LEMON";
         Key_PlayFair = "MONARCHY";
         Which_Cipher(Cipher);
@@ -48,6 +50,7 @@ public class Encrypted_Activity extends AppCompatActivity {
                 intent.putExtra("Cipher",Cipher);
                 intent.putExtra("StringKey",keyString);
                 intent.putExtra("Key_PlayFair",Key_PlayFair);
+                intent.putExtra("railfence_Key",railfence_Key);
                 startActivity(intent);
             }
         });
@@ -73,6 +76,14 @@ public class Encrypted_Activity extends AppCompatActivity {
                 ciphertext.setText("PlayFair");
                 Cipher = "PlayFair";
                 break;
+            case "Rail Fence":
+                ciphertext.setText("RailFence");
+                Cipher = "RailFence";
+                break;
+            case "Columnar Transposition Cipher":
+                ciphertext.setText("Columnar");
+                Cipher = "Columnar";
+                break;
 
         }
     }
@@ -94,7 +105,13 @@ public class Encrypted_Activity extends AppCompatActivity {
             case "PlayFair":
                 PlayFair playFair = new PlayFair(Message.getText().toString(),Key_PlayFair);
                 Todecrypt.setText(playFair.Encryption());
-
+                break;
+            case "RailFence":
+                RailFence railFence = new RailFence(Message.getText().toString(),railfence_Key);
+                Todecrypt.setText(railFence.Encryption());
+                break;
+            case "Columnar":
+                break;
         }
     }
 
