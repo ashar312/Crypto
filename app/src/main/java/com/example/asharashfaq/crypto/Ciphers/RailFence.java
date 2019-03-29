@@ -34,7 +34,7 @@ public class RailFence {
 
         return str;
     }
-    
+
     public String Decryption(){
         String str = "";
 
